@@ -40,13 +40,22 @@ Beware that `wget` must be built with Apple's SSL library to take effect of trus
 ### Rebuild Trust Settings
 
 ``` sh
-./build-trust-settings.sh
+CERTIFICATES=essential ./build-trust-settings.sh
 ```
 
-This will rebuild trust settings using all online certs found in Windows version.
+This will rebuild trust settings using certs considered to be high risk.
 
-To build a blacklist with your own choice of certifications, edit `$ISSUERS` and `$CERTIFICATIONS` in [build-trust-settings.sh](build-trust-settings.sh).
+```
+CERTIFICATES=recommend ./build-trust-settings.sh
+```
 
+This will rebuild trust settings using certs considered to be medium or high risk. *Default*.
+
+```
+CERTIFICATES=strict ./build-trust-settings.sh
+```
+
+This will rebuild trust settings using all known certs.
 
 ### Reset Trust Settings
 
